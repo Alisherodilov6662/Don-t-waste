@@ -3,6 +3,7 @@ package com.example.entity;
 import com.example.enums.Role;
 import com.example.enums.Status;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
  * Author: Alisher Odilov
  * Date: 17.03.2023
  */
+@Data
 @Entity
 @Table(name = "profile")
 public class ProfileEntity {

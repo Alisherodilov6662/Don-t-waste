@@ -5,10 +5,7 @@ import com.example.service.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Author: Alisher Odilov
@@ -25,6 +22,12 @@ public class AuthController {
     @PostMapping("/registration")
     ResponseEntity<?> registration(@RequestBody ProfileDTO dto){
         String result=authService.registration(dto);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/verification/email/{jwt}")
+    ResponseEntity<?> verification(@PathVariable("jwt") String jwt){
+        String result=authService.verification(jwt);
         return ResponseEntity.ok(result);
     }
 
