@@ -7,4 +7,7 @@
 3) Admin Page
 4) User Page
 
+Table
+ 1)Profile
+       id,name,surname,email,phone,password,role,status,attach_id,created_date;
 
