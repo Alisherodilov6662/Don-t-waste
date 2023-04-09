@@ -1,6 +1,6 @@
 package com.example.entity;
 
-import com.example.enums.Role;
+import com.example.enums.ProfileRole;
 import com.example.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Entity
-@Table(name = "profile")
+@Table(name = "profile_entity")
 public class ProfileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class ProfileEntity {
     private String password;
     @Column
     @Enumerated(value = EnumType.STRING)
-    private Role role;
+    private ProfileRole role;
     @Column
     @Enumerated(value = EnumType.STRING)
     private Status status;
