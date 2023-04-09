@@ -11,3 +11,43 @@ Table
  1)Profile
        id,name,surname,email,phone,password,role,status,attach_id,created_date;
 
+ 2) Attach
+
+
+ 3) Category
+    id,name,attach_id,createdDate;
+
+    API for category
+
+    1) create Category by Admin
+    2) delete Category by Admin
+    3) update Category by Admin
+
+ 4) InnerCategory
+    id,name,createdDate;
+
+    API for innerCategory
+
+    1)create
+    2)delete
+    3)update
+
+ 5) advert --> name, category_id, description, phone, reason for giving, photos is optional(photo _id),like_count,
+               profileId;
+
+ 6) Admin panel
+
+        Create Category all things (delete,create,update)
+        Add Admin 2nd important (only things which is related to category)
+
+        Profile
+                to block user
+                to active user
+
+
+ 6) User panel
+
+        create advert
+
+
+
