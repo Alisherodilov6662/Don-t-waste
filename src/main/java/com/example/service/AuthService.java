@@ -7,7 +7,6 @@ import com.example.enums.Status;
 import com.example.exceptions.EmailAlreadyExistException;
 import com.example.repository.ProfileRepository;
 import com.example.util.MD5Util;
-import io.jsonwebtoken.JwtException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -52,14 +51,7 @@ public class AuthService {
 
     public String verification(String jwt) {
         String email;
-        try{
 
 
-
-        }catch (JwtException e){
-
-        }
-
-return null;
     }
 }

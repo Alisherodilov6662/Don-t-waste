@@ -5,6 +5,6 @@ package com.example.enums;
  * Date: 17.03.2023
  */
 
-public enum Role {
-    USER, ADMIN;
+public enum ProfileRole {
+    USER, ADMIN, SECONDADMIN;
 }

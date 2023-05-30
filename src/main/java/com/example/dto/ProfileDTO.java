@@ -1,6 +1,6 @@
 package com.example.dto;
 
-import com.example.enums.Role;
+import com.example.enums.ProfileRole;
 import com.example.enums.Status;
 import lombok.Data;
 
@@ -17,7 +17,7 @@ public class ProfileDTO{
     private  String email;
     private  String phone;
     private  String password;
-    private  Role role;
+    private  ProfileRole role;
     private  Status status;
     private  LocalDateTime createdDate;
     private  String attach_id;
