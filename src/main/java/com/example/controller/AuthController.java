@@ -41,4 +41,10 @@ public class AuthController {
 
 //    they are API ofr  our registration
 
+     int game=3;
+
+    public void game(){
+        game=19;
+    }
+
 }
