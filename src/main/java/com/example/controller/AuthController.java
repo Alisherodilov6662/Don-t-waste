@@ -47,4 +47,6 @@ public class AuthController {
         game=19;
     }
 
+    //hammasi joyida//
+
 }
