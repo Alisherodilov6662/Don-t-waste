@@ -39,7 +39,7 @@ public class AuthController {
         return ResponseEntity.ok(response);
     }
 
-//    they are API ofr  our registration
+
 
      int game=3;
 
@@ -47,6 +47,6 @@ public class AuthController {
         game=19;
     }
 
-    //hammasi joyida//
+
 
 }
