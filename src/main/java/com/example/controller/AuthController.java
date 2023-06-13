@@ -46,7 +46,6 @@ public class AuthController {
     public void game(){
         game=19;
     }
-
-
+//this is a controller
 
 }
