@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.ProfileDTO;
 import com.example.entity.ProfileEntity;
+import com.example.enums.ProfileRole;
 import com.example.enums.Role;
 import com.example.enums.Status;
 import com.example.exceptions.EmailAlreadyExistException;
@@ -39,9 +40,11 @@ public class AuthService {
         entity.setPassword(MD5Util.MD5(dto.getPassword()));
         entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());
-        entity.setRole(Role.USER);
+        entity.setRole(ProfileRole.USER);
         entity.setStatus(Status.NOT_ACTIVE);
         entity.setCreatedDate(LocalDateTime.now());
+        entity.setAttach_id(dto.getAttach_id());
+
         profileRepository.save(entity);
         dto.setId(entity.getId());
 
