@@ -1,9 +1,9 @@
 package com.example.service;
 
+import com.example.dto.LoginDTO;
 import com.example.dto.ProfileDTO;
 import com.example.entity.ProfileEntity;
 import com.example.enums.ProfileRole;
-import com.example.enums.Role;
 import com.example.enums.Status;
 import com.example.exceptions.EmailAlreadyExistException;
 import com.example.repository.ProfileRepository;
@@ -56,5 +56,21 @@ public class AuthService {
         String email;
 
 
+    }
+
+    public String login(LoginDTO dto) {
+        Optional<ProfileEntity> optional=profileRepository.findByEmail(dto.getEmail());
+
+        if (optional.isEmpty()){
+            return "Email is not exist ! ";
+        }
+        ProfileEntity entity=optional.get();
+        if (entity.getStatus().equals(Status.BLOCKED)||entity.getStatus().equals(Status.NOT_ACTIVE)){
+            return "User was blocked or Non-Active";
+        }
+        if (!MD5Util.MD5(dto.getPassword()).equals(entity.getPassword())){
+            return "password is incorrect!";
+        }
+        return "succesfully login";
     }
 }
