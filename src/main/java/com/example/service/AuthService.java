@@ -54,7 +54,7 @@ public class AuthService {
 
     public String verification(String jwt) {
         String email;
-
+//
 
     }
 
