@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Author: Alisher Odilov
@@ -9,8 +10,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "attach")
 public class AttachEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "attach_uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
 }
