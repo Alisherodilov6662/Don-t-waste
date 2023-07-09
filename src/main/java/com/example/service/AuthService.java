@@ -52,10 +52,12 @@ public class AuthService {
         return "Link was sent";
     }
 
+
+
     public String verification(String jwt) {
         String email;
-//
 
+//verification codes
     }
 
     public String login(LoginDTO dto) {
