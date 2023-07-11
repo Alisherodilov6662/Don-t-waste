@@ -27,11 +27,11 @@ public class AdvertsEntity {
     private String name;
 
     @Column(name = "photo_id")
-    private List<String> id;
+    private String photoId;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "photo_id", insertable = false, updatable = false)
-    private List<AttachEntity> photo;
+    private AttachEntity photo;
 
     @Column
     private String description;

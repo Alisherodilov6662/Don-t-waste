@@ -2,6 +2,7 @@ package com.example.entity.advert;
 
 import com.example.entity.AttachEntity;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
  * Author: Alisher Odilov
  * Date: 18.06.2023
  */
+@Data
 @Entity
 @Table(name = "advert_section_entity")
 public class AdvertSectionEntity {
