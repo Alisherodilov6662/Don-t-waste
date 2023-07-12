@@ -4,10 +4,7 @@ import com.example.dto.advert.AdvertSectionCreationDTO;
 import com.example.service.AdvertSectionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Author: Alisher Odilov
@@ -23,6 +20,11 @@ public class AdvertSectionController {
     public ResponseEntity<?> create(@RequestBody AdvertSectionCreationDTO dto){
         AdvertSectionCreationDTO result=advertSectionService.create(dto);
         return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@RequestBody AdvertSectionCreationDTO dto, @PathVariable("id") Integer id){
+        AdvertSectionCreationDTO result=advertSectionService.update(dto,id);
     }
 
 }

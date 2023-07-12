@@ -30,6 +30,9 @@ public class AdvertSectionService {
         advertSectionRepository.save(entity);
         return dto;
     }
+    public AdvertSectionCreationDTO update(AdvertSectionCreationDTO dto, Integer id) {
+
+    }
 
     private AdvertSectionEntity toEntity(AdvertSectionCreationDTO dto) {
         AdvertSectionEntity entity = new AdvertSectionEntity();
@@ -37,4 +40,5 @@ public class AdvertSectionService {
         entity.setPhotoId(dto.getPhotoId());
         return entity;
     }
+
 }
