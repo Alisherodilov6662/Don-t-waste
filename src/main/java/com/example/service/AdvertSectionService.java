@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.advert.AdvertSectionCreationDTO;
 import com.example.entity.advert.AdvertSectionEntity;
+import com.example.exceptions.AdvertSectionIsNotExist;
 import com.example.exceptions.AdvertsSectionEntityAlreadyExistException;
 import com.example.repository.AdvertSectionRepository;
 import lombok.AllArgsConstructor;
@@ -31,7 +32,16 @@ public class AdvertSectionService {
         return dto;
     }
     public AdvertSectionCreationDTO update(AdvertSectionCreationDTO dto, Integer id) {
-
+        Optional<AdvertSectionEntity> optional=advertSectionRepository.findById(id);
+        if (optional.isEmpty()){
+            throw new AdvertSectionIsNotExist(" such kind of advertSection is not exist ! ");
+        }
+        AdvertSectionEntity entity=optional.get();
+        entity.setName(dto.getName());
+        entity.setPhotoId(dto.getPhotoId());
+        entity.setUpdatedDate(LocalDateTime.now());
+        advertSectionRepository.save(entity);
+        return dto;
     }
 
     private AdvertSectionEntity toEntity(AdvertSectionCreationDTO dto) {
