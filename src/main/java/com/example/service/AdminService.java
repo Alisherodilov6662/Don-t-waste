@@ -79,4 +79,8 @@ public class AdminService {
         profileRepository.save(entity);
         return true;
     }
+
+    public  Boolean such(){
+
+    }
 }
