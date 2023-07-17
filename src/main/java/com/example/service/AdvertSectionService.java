@@ -44,6 +44,15 @@ public class AdvertSectionService {
         return dto;
     }
 
+    public Boolean deleteById(Integer id) {
+        Optional<AdvertSectionEntity> optional=advertSectionRepository.findById(id);
+        if (optional.isEmpty()){
+            throw new AdvertSectionIsNotExist("such kind of advertSection is not exist ! ");
+        }
+        advertSectionRepository.deleteById(id);
+        return true;
+    }
+
     private AdvertSectionEntity toEntity(AdvertSectionCreationDTO dto) {
         AdvertSectionEntity entity = new AdvertSectionEntity();
         entity.setName(dto.getName());
