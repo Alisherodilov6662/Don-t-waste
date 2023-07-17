@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.advert;
 
 import com.example.dto.advert.AdvertSectionCreationDTO;
 import com.example.service.AdvertSectionService;
@@ -25,7 +25,15 @@ public class AdvertSectionController {
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@RequestBody AdvertSectionCreationDTO dto, @PathVariable("id") Integer id){
         AdvertSectionCreationDTO result=advertSectionService.update(dto,id);
+        return ResponseEntity.ok(result);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Integer id){
+      Boolean result=advertSectionService.deleteById(id);
+      return ResponseEntity.ok(result);
+    }
+
 
 }
 
