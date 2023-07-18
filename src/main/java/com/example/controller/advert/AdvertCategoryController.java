@@ -13,5 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/advertCategory")
 public class AdvertCategoryController {
-    private AdvertCategoryService advertCategoryService;
+
+    private final AdvertCategoryService advertCategoryService;
+
 }
