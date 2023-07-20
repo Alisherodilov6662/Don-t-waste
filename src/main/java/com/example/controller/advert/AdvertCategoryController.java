@@ -1,9 +1,10 @@
 package com.example.controller.advert;
 
-import com.example.controller.service.AdvertCategoryService;
+import com.example.dto.advert.AdvertCategoryCreationDTO;
+import com.example.service.AdvertCategoryService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Author: Alisher Odilov
@@ -15,5 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdvertCategoryController {
 
     private final AdvertCategoryService advertCategoryService;
+
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@RequestBody AdvertCategoryCreationDTO dto){
+        AdvertCategoryCreationDTO result=advertCategoryService.create(dto);
+        return ResponseEntity.ok(result);
+    }
 
 }
