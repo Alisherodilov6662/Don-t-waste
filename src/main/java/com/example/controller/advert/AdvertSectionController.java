@@ -1,5 +1,6 @@
 package com.example.controller.advert;
 
+import com.example.dto.advert.AdvertSectionGetDTO;
 import com.example.dto.advert.AdvertSectionCreationDTO;
 import com.example.service.AdvertSectionService;
 import lombok.AllArgsConstructor;
@@ -29,11 +30,16 @@ public class AdvertSectionController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Integer id){
+    public ResponseEntity<?> deleteById(@PathVariable("id") Integer id){
       Boolean result=advertSectionService.deleteById(id);
       return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<?> getById(@PathVariable("id") Integer id){
+        AdvertSectionGetDTO result=advertSectionService.getById(id);
+        return ResponseEntity.ok(result);
+    }
 
 }
 
