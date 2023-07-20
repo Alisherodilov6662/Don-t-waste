@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.dto.advert.AdvertSectionGetDTO;
 import com.example.dto.advert.AdvertSectionCreationDTO;
 import com.example.entity.advert.AdvertSectionEntity;
 import com.example.exceptions.AdvertSectionIsNotExist;
@@ -60,4 +61,22 @@ public class AdvertSectionService {
         return entity;
     }
 
+    public AdvertSectionGetDTO getById(Integer id) {
+        Optional<AdvertSectionEntity> optional=advertSectionRepository.findById(id);
+        if (optional.isEmpty()){
+            throw new AdvertSectionIsNotExist("such kind of advertSection is not exist ! ");
+        }
+        AdvertSectionGetDTO dto=toDTO(optional.get());
+        return dto;
+    }
+
+    private AdvertSectionGetDTO toDTO(AdvertSectionEntity advertSectionEntity) {
+        AdvertSectionGetDTO dto=new AdvertSectionGetDTO();
+        dto.setName(advertSectionEntity.getName());
+        dto.setPhotoId(advertSectionEntity.getPhotoId());
+        dto.setCreatedDate(advertSectionEntity.getCreatedDate());
+        dto.setUpdatedDate(advertSectionEntity.getUpdatedDate());
+        dto.setId(advertSectionEntity.getId());
+        return dto;
+    }
 }
