@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.dto.advert.AdvertSectionGetDTO;
 import com.example.dto.advert.AdvertSectionCreationDTO;
 import com.example.entity.advert.AdvertSectionEntity;
+import com.example.enums.Language;
 import com.example.exceptions.AdvertSectionIsNotExist;
 import com.example.exceptions.AdvertsSectionEntityAlreadyExistException;
 import com.example.repository.AdvertSectionRepository;
@@ -20,11 +21,12 @@ import java.util.Optional;
 @AllArgsConstructor
 public class AdvertSectionService {
     private final AdvertSectionRepository advertSectionRepository;
+    private final ResourceBundleService resourceBundleService;
 
-    public AdvertSectionCreationDTO create(AdvertSectionCreationDTO dto) {
+    public AdvertSectionCreationDTO create(AdvertSectionCreationDTO dto, Language language) {
         Optional<AdvertSectionEntity> optional = advertSectionRepository.findByName(dto.getName());
         if (optional.isPresent()) {
-            throw new AdvertsSectionEntityAlreadyExistException("AdvertsSectionEntity is already exist ! ");
+            throw new AdvertsSectionEntityAlreadyExistException(resourceBundleService.getMessage("advertsection.exist", language.name()));
         }
         AdvertSectionEntity entity = toEntity(dto);
         entity.setCreatedDate(LocalDateTime.now());
@@ -32,10 +34,10 @@ public class AdvertSectionService {
         advertSectionRepository.save(entity);
         return dto;
     }
-    public AdvertSectionCreationDTO update(AdvertSectionCreationDTO dto, Integer id) {
+    public AdvertSectionCreationDTO update(AdvertSectionCreationDTO dto, Integer id, Language language) {
         Optional<AdvertSectionEntity> optional=advertSectionRepository.findById(id);
         if (optional.isEmpty()){
-            throw new AdvertSectionIsNotExist(" such kind of advertSection is not exist ! ");
+            throw new AdvertSectionIsNotExist(resourceBundleService.getMessage("advertsection.not.exist", language.name()));
         }
         AdvertSectionEntity entity=optional.get();
         entity.setName(dto.getName());
@@ -45,10 +47,10 @@ public class AdvertSectionService {
         return dto;
     }
 
-    public Boolean deleteById(Integer id) {
+    public Boolean deleteById(Integer id, Language language) {
         Optional<AdvertSectionEntity> optional=advertSectionRepository.findById(id);
         if (optional.isEmpty()){
-            throw new AdvertSectionIsNotExist("such kind of advertSection is not exist ! ");
+            throw new AdvertSectionIsNotExist(resourceBundleService.getMessage("advertsection.not.exist", language.name()));
         }
         advertSectionRepository.deleteById(id);
         return true;
@@ -61,10 +63,10 @@ public class AdvertSectionService {
         return entity;
     }
 
-    public AdvertSectionGetDTO getById(Integer id) {
+    public AdvertSectionGetDTO getById(Integer id, Language language) {
         Optional<AdvertSectionEntity> optional=advertSectionRepository.findById(id);
         if (optional.isEmpty()){
-            throw new AdvertSectionIsNotExist("such kind of advertSection is not exist ! ");
+            throw new AdvertSectionIsNotExist(resourceBundleService.getMessage("advertsection.not.exist", language.name()));
         }
         AdvertSectionGetDTO dto=toDTO(optional.get());
         return dto;

@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.advert.AdvertCategoryCreationDTO;
 import com.example.entity.advert.AdvertCategoryEntity;
+import com.example.enums.Language;
 import com.example.exceptions.CategoryExistException;
 import com.example.repository.AdvertCategoryRepository;
 import lombok.AllArgsConstructor;
@@ -18,12 +19,13 @@ import java.util.Optional;
 @AllArgsConstructor
 public class AdvertCategoryService {
 
-    private AdvertCategoryRepository advertCategoryRepository;
+    private final AdvertCategoryRepository advertCategoryRepository;
+    private final ResourceBundleService resourceBundleService;
 
-    public AdvertCategoryCreationDTO create(AdvertCategoryCreationDTO dto) {
+    public AdvertCategoryCreationDTO create(AdvertCategoryCreationDTO dto, Language language) {
         Optional<AdvertCategoryEntity> optional=advertCategoryRepository.findByName(dto.getName());
         if(optional.isPresent()){
-            throw new CategoryExistException(" such category exist");
+            throw new CategoryExistException(resourceBundleService.getMessage("item.exist", language.name()));
         }
         AdvertCategoryEntity entity=new AdvertCategoryEntity();
         entiry

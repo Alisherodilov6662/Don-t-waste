@@ -15,7 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 public class AttachService {
 
-    private AttachmentRepository attachmentRepository;
+    private final AttachmentRepository attachmentRepository;
+
+    private final ResourceBundleService resourceBundleService;
+
 
     public AttachResponseDTO uploadFile(MultipartFile file) {
     }

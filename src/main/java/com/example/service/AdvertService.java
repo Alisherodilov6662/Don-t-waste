@@ -12,4 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AdvertService {
     private final AdvertRepository advertRepository;
+
+    private final ResourceBundleService resourceBundleService;
+
 }

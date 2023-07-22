@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.dto.LoginDTO;
 import com.example.dto.ProfileDTO;
 import com.example.entity.ProfileEntity;
+import com.example.enums.Language;
 import com.example.enums.ProfileRole;
 import com.example.enums.Status;
 import com.example.exceptions.EmailAlreadyExistException;
@@ -23,14 +24,17 @@ import java.util.Optional;
 public class AuthService {
     private final ProfileRepository profileRepository;
 
-    public String registration(ProfileDTO dto) {
+    private final ResourceBundleService resourceBundleService;
+
+
+    public String registration(ProfileDTO dto, Language language) {
         Optional<ProfileEntity> optional=profileRepository.findByEmail(dto.getEmail());
         if (optional.isPresent()){
             ProfileEntity entity= optional.get();
             if (entity.getStatus().equals(Status.NOT_ACTIVE)){
                 profileRepository.delete(entity);
             }else{
-                throw new EmailAlreadyExistException("email exist ! ");
+                throw new EmailAlreadyExistException(resourceBundleService.getMessage("email.exist", language.name()));
             }
         }
 
