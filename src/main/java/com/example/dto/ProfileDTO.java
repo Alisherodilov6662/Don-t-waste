@@ -2,6 +2,8 @@ package com.example.dto;
 
 import com.example.enums.ProfileRole;
 import com.example.enums.Status;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,10 +14,15 @@ import java.time.LocalDateTime;
 @Data
 public class ProfileDTO{
     private  Long id;
+    @NotBlank(message = "Name should not be null ! ")
     private  String name;
+    @NotBlank(message = "SurName should not be null ! ")
     private  String surname;
+    @Email(message = "Email shoul be valid ! ")
     private  String email;
+    //Todo
     private  String phone;
+    //Todo o`zim validation yasayman
     private  String password;
     private  ProfileRole role;
     private  Status status;

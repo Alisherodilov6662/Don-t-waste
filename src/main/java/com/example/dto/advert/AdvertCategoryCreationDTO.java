@@ -1,5 +1,6 @@
 package com.example.dto.advert;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  */
 @Data
 public class AdvertCategoryCreationDTO {
+    @NotBlank(message = "Name should not be empty ! ")
     private String name;
     private String photoId;
 }
