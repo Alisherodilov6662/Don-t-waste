@@ -2,8 +2,10 @@ package com.example.dto;
 
 import com.example.enums.ProfileRole;
 import com.example.enums.Status;
+import com.example.validation.validationInterface.ValidPhone;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -20,9 +22,10 @@ public class ProfileDTO{
     private  String surname;
     @Email(message = "Email shoul be valid ! ")
     private  String email;
-    //Todo
+    @ValidPhone //Todo o`zim yasadim ichiga kirib ko`ringlar
     private  String phone;
-    //Todo o`zim validation yasayman
+    @NotBlank
+    @Size(max = 8, min = 8, message = "charachter should be 8 !")
     private  String password;
     private  ProfileRole role;
     private  Status status;
