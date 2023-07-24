@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.LoginDTO;
 import com.example.dto.ProfileDTO;
+import com.example.enums.Language;
 import com.example.service.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,9 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/registration")
-    ResponseEntity<?> registration(@RequestBody ProfileDTO dto){
-        String result=authService.registration(dto);
+    ResponseEntity<?> registration(@RequestBody ProfileDTO dto,
+                                   @RequestHeader(value = "Accept-Language") Language language){
+        String result=authService.registration(dto, language);
         return ResponseEntity.ok(result);
     }
 
