@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.dto.AttachResponseDTO;
 import com.example.service.AttachService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
  * Date: 17.03.2023
  */
 //@Tag(name = "Attach Controller", description = "This controller for file uploading and file downloading")
+@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/attach")
@@ -32,6 +34,7 @@ public class AttachController {
      */
     @PostMapping(value = "/public/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> uploadFile(@ModelAttribute("file")MultipartFile file){
+        log.info("upload file : multipartFile{}", file);
         AttachResponseDTO result=attachService.uploadFile(file);
         return ResponseEntity.ok(result);
     }
