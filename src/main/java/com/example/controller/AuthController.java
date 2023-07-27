@@ -26,19 +26,21 @@ public class AuthController {
     @PostMapping("/registration")
     ResponseEntity<?> registration(@RequestBody ProfileDTO dto,
                                    @RequestHeader(value = "Accept-Language") Language language){
-        log.info("registration user ProfileDto - > ", dto);
+        log.info("registration ProfileDto: {} ", dto);
         String result=authService.registration(dto, language);
         return ResponseEntity.ok(result);
     }
 
     @GetMapping("/verification/email/{jwt}")
     ResponseEntity<?> verification(@PathVariable("jwt") String jwt){
+        log.info("verification jwt: {}", jwt);
         String result=authService.verification(jwt);
         return ResponseEntity.ok(result);
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO dto) {
+        log.info("login LoginDTO: {}", dto);
         String response = authService.login(dto);
         return ResponseEntity.ok(response);
     }

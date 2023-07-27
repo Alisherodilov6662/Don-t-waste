@@ -34,7 +34,7 @@ public class AttachController {
      */
     @PostMapping(value = "/public/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> uploadFile(@ModelAttribute("file")MultipartFile file){
-        log.info("upload file : multipartFile{}", file);
+        log.info("upload file -> multipartFile: {}", file);
         AttachResponseDTO result=attachService.uploadFile(file);
         return ResponseEntity.ok(result);
     }
@@ -48,6 +48,7 @@ public class AttachController {
      */
     @GetMapping(value = "public/download/{id}", produces = MediaType.ALL_VALUE)
     public ResponseEntity<?> downloadFile(@PathVariable("id") String id){
+        log.info("downloadMedia by id: {}", id);
         Resource file =attachService.downloadFile(id);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
         "attachment; filename=\"" + file.getFilename()+"\"").body(file);

@@ -23,7 +23,7 @@ public class AdvertCategoryController {
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody AdvertCategoryCreationDTO dto,
                                     @RequestHeader(value = "Accept-Language") Language language) {
-        log.info("create AdvertCategory by AdvertCategoryCreationDTO  -> ", dto);
+        log.info("create AdvertCategory by AdvertCategoryCreationDTO: {}", dto);
         AdvertCategoryCreationDTO result = advertCategoryService.create(dto, language);
         return ResponseEntity.ok(result);
     }
