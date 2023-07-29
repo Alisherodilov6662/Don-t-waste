@@ -13,6 +13,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class JwtDTO {
-    private String email;
+    private String username;
     private ProfileRole role;
 }
