@@ -24,7 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final ProfileRepository profileRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<ProfileEntity> optional=profileRepository.findByEmail(username);
+        Optional<ProfileEntity> optional=profileRepository.findByUsername(username);
         if (optional.isEmpty()){
             throw new EmailNotFoundException("Bad Credentials");
         }

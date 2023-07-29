@@ -20,8 +20,8 @@ public class ProfileEntity {
     private Long id;
     @Column
     private String name;
-    @Column
-    private String surname;
+    @Column(unique = true)
+    private String username;
     @Column
     private String email;
     @Column

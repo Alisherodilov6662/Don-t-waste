@@ -24,6 +24,7 @@ public class SecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
     private final PasswordEncoder passwordEncoder;
+    private final JwtFilter jwtFilter;
 
     @Bean
     AuthenticationProvider authenticationProvider() {
@@ -47,10 +48,10 @@ public class SecurityConfig {
                 .anyRequest()        // xar qanday request o`tsin dedik
                 .authenticated()    //authenticated
                 .and()              // va
-                .httpBasic()      // httpBasic bo`lsin dedik
+                .httpBasic()      // httpBasic bo`lsin dedik //todo shu yerda farq qiladi
                 .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);//bu yerda oldin filter qil deyapti
         //yani qandaydir tooken berilgan bo`lsa headerdan shuni tekshiradigan class o`zgaruvchisi
-
+        return http.build();
     }
-}
+
 }
