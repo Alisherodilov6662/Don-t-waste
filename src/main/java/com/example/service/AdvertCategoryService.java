@@ -27,8 +27,8 @@ public class AdvertCategoryService {
         if(optional.isPresent()){
             throw new CategoryExistException(resourceBundleService.getMessage("item.exist", language.name()));
         }
-        AdvertCategoryEntity entity=new AdvertCategoryEntity();
-        entity.equals();
-
+//        AdvertCategoryEntity entity=new AdvertCategoryEntity();
+//        entity.equals();
+       return null;
     }
 }

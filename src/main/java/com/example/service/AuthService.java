@@ -40,7 +40,7 @@ public class AuthService {
 
         ProfileEntity entity=new ProfileEntity();
         entity.setName(dto.getName());
-        entity.setSurname(dto.getSurname());
+        entity.setUsername(dto.getSurname());
         entity.setPassword(MD5Util.MD5(dto.getPassword()));
         entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());
@@ -62,6 +62,7 @@ public class AuthService {
         String email;
 
 //verification codes
+        return null;
     }
 
     public String login(LoginDTO dto) {

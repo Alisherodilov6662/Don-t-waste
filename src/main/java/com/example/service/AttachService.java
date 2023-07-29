@@ -21,8 +21,10 @@ public class AttachService {
 
 
     public AttachResponseDTO uploadFile(MultipartFile file) {
+        return null;
     }
 
     public Resource downloadFile(String id) {
+        return null;
     }
 }

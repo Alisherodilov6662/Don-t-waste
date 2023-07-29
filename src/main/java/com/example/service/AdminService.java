@@ -83,6 +83,6 @@ public class AdminService {
     }
 
     public  Boolean such(){
-
+        return null;
     }
 }
