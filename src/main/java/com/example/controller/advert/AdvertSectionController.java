@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping("/advertSection")
+@RequestMapping("/api/advertSection")
 public class AdvertSectionController {
 
     private final AdvertSectionService advertSectionService;

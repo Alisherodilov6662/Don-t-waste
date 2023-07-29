@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping("/controller")
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
