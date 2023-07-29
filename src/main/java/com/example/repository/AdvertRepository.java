@@ -1,6 +1,6 @@
 package com.example.repository;
 
-import com.example.entity.AdvertEntity;
+import com.example.entity.advert.AdvertsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  * Date: 03.04.2023
  */
 @Repository
-public interface AdvertRepository extends JpaRepository<AdvertEntity,Long> {
+public interface AdvertRepository extends JpaRepository<AdvertsEntity,Long> {
 }
