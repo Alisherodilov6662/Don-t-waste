@@ -8,7 +8,9 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -25,7 +27,19 @@ public class SecurityConfig {
     private final CustomUserDetailsService customUserDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final JwtFilter jwtFilter;
+    private final AuthEntryPointJwt authEntryPointJwt;
 
+    private static final String[] AUTH_WHITELIST = {
+            "/v2/api-docs",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/",
+            "/v3/api-docs//**",
+            "/swagger-ui/**",
+            "/swagger-resources",
+            "/swagger-resources/"
+    };
     @Bean
     AuthenticationProvider authenticationProvider() {
         final DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
@@ -41,16 +55,21 @@ public class SecurityConfig {
         http
                 .csrf().disable()  //csrf ni o`chirib qo`ydik
                 .cors();         //cors esa yoniq
+        http
+                .httpBasic().disable()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeHttpRequests()//autharizationdan o`tsin dedik
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/api/attach/public/**").permitAll()
-                .anyRequest()        // xar qanday request o`tsin dedik
-                .authenticated()    //authenticated
-                .and()              // va
-                .httpBasic()      // httpBasic bo`lsin dedik //todo shu yerda farq qiladi
-                .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);//bu yerda oldin filter qil deyapti
-        //yani qandaydir tooken berilgan bo`lsa headerdan shuni tekshiradigan class o`zgaruvchisi
+                .requestMatchers(AUTH_WHITELIST).permitAll()
+                .anyRequest()
+                .authenticated()
+                .and().addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        http
+                .exceptionHandling()
+                .authenticationEntryPoint(authEntryPointJwt);
         return http.build();
     }
 
