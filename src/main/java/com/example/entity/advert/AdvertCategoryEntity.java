@@ -34,7 +34,7 @@ public class AdvertCategoryEntity {
     @Column(name = "created_date")
     private LocalDateTime createdDate;
 
-//    @Column(name = "updated_date")
-//    private LocalDateTime updatedDate;
+    @Column(name = "updated_date")
+    private LocalDateTime updatedDate;
 
 }
