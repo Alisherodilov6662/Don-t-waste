@@ -31,10 +31,10 @@ public class AdvertCategoryEntity {
     @Column(name = "visible")
     private Boolean visible;
 
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
-
-    @Column(name = "updated_date")
-    private LocalDateTime updatedDate;
-
+//    @Column(name = "created_date")
+//    private LocalDateTime createdDate;
+//
+//    @Column(name = "updated_date")
+//    private LocalDateTime updatedDate;
+//
 }
