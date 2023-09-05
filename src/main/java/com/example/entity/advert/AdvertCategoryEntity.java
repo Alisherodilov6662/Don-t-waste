@@ -28,8 +28,8 @@ public class AdvertCategoryEntity {
     @JoinColumn(name = "photo_id", insertable = false, updatable = false)
     private AttachEntity photo;
 
-    @Column(name = "visible")
-    private Boolean visible;
+//    @Column(name = "visible")
+//    private Boolean visible;
 
     @Column(name = "created_date")
     private LocalDateTime createdDate;
